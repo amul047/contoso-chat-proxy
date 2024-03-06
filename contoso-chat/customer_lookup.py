@@ -1,14 +1,30 @@
-from typing import Dict
+# In production RAG apps, this tool would query a database or an API to get the customer's order history.
+# For the purpose of this demo, we are using local JSON files and Pandas DataFrames to simulate the customer's order history.
+
+import os
 from promptflow import tool
-from azure.cosmos import CosmosClient
-from promptflow.connections import CustomConnection
+import pandas as pd
+
+
+def get_customer_order_history(customerId):
+    path = r"../data/customer_info/"
+    big_df = pd.concat(
+        [
+            pd.read_json(path + file)
+            for file in os.listdir(path)
+            if file.endswith(".json")
+        ],
+        ignore_index=True,
+    )
+    return big_df[big_df["id"] == int(customerId)]
 
 
 @tool
-def customer_lookup(customerId: str, conn: CustomConnection) -> str:
-    client = CosmosClient(url=conn.configs["endpoint"], credential=conn.secrets["key"])
-    db = client.get_database_client(conn.configs["databaseId"])
-    container = db.get_container_client(conn.configs["containerId"])
-    response = container.read_item(item=customerId, partition_key=customerId)
-    response["orders"] = response["orders"][:2]
-    return response
+def customer_lookup(customerId: str) -> str:
+    rows = get_customer_order_history(customerId)
+    if not rows.empty:
+        response = rows.iloc[0].to_dict()
+        response["orders"] = [row["orders"] for _, row in rows.iterrows()][:2]
+        return response
+
+    return {}

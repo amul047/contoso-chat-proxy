@@ -51,7 +51,6 @@ nodes:
     path: customer_lookup.py
   inputs:
     customerId: ${inputs.customerId}
-    conn: contoso-cosmos
 - name: customer_prompt
   type: prompt
   source:
