@@ -38,7 +38,7 @@ nodes:
   inputs:
     connection: aoai-connection
     input: ${rewrite_query.output}
-    deployment_name: text-embedding-ada-002
+    deployment_name: text-embedding-3-small
   use_variants: false
 - name: customer_lookup
   type: python

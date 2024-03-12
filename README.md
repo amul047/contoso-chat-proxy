@@ -258,7 +258,7 @@ The prompt flow is a directed acyclic graph (DAG) of nodes, with a starting node
 | Node | Description |
 |:---|:---|
 |*input*s  | This node is used to start the flow and is the entry point for the flow. It has the input parameters `customer_id` and `question`, and `chat_history`. The `customer_id` is used to look up the customer information in the Cosmos DB. The `question` is the question the customer is asking. The `chat_history` is the chat history of the conversation with the customer.|
-| *question_embedding* | This node is used to embed the question text using the `text-embedding-ada-002` model. The embedding is used to find the most relevant documents from the AI Search index.|
+| *question_embedding* | This node is used to embed the question text using the `text-embedding-3-small` model. The embedding is used to find the most relevant documents from the AI Search index.|
 | *retrieve_documents*| This node is used to retrieve the most relevant documents from the AI Search index with the question vector. |
 | *customer_lookup* | This node is used to get the customer information from the Cosmos DB.|
 | *customer_prompt*|This node is used to generate the prompt with the information retrieved and added to the `customer_prompt.jinja2` template. |

@@ -50,10 +50,10 @@ var deployments = [
     }
   }
   {
-    name: 'text-embedding-ada-002'
+    name: 'text-embedding-3-small'
     model: {
       format: 'OpenAI'
-      name: 'text-embedding-ada-002'
+      name: 'text-embedding-3-small'
       version: '2'
     }
     sku: {

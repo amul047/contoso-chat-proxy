@@ -8,12 +8,12 @@ inputs:
     is_chat_history: true
   question:
     type: string
-    default: What can you tell me about your jackets?
+    default: what tent would you recommend for beginners?
     is_chat_input: true
     is_chat_history: false
   customerId:
     type: string
-    default: "2"
+    default: "7"
     is_chat_input: false
     is_chat_history: false
 outputs:
@@ -33,7 +33,7 @@ nodes:
   inputs:
     connection: aoai-connection
     input: ${inputs.question}
-    deployment_name: text-embedding-ada-002
+    deployment_name: text-embedding-3-small
 - name: retrieve_documentation
   type: python
   source:
