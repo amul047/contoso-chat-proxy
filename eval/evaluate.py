@@ -1,4 +1,4 @@
-from promptflow import PFClient
+from promptflow.client import PFClient
 from promptflow.azure import PFClient as PFClientAzure
 import datetime
 
