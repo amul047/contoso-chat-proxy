@@ -1,5 +1,5 @@
 from typing import List
-from promptflow import tool
+from promptflow.core import tool
 from azure.search.documents import SearchClient
 from azure.search.documents.models import VectorizedQuery, QueryType, QueryCaptionType, QueryAnswerType
 from azure.core.credentials import AzureKeyCredential

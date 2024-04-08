@@ -2,7 +2,7 @@
 # For the purpose of this demo, we are using local JSON files and Pandas DataFrames to simulate the customer's order history.
 
 import os
-from promptflow import tool
+from promptflow.core import tool
 import pandas as pd
 
 

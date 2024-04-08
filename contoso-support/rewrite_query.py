@@ -1,6 +1,7 @@
-from promptflow import tool
+from promptflow.core import tool
 from promptflow.connections import AzureOpenAIConnection
-import os, openai
+import os
+import openai
 from jinja2 import Template
 
 @tool
